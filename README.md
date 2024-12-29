@@ -1,6 +1,6 @@
 # otoshidama-roulette
 
-Version 0.4.0
+Version 0.5.0
 
 [Japanese README](README.ja.md)
 
@@ -29,7 +29,7 @@ A Web application for determining the amount of "otoshidama", a gift of money gi
 
 ## Known Issue
 
--
+- Sound effects sometimes may not play when the button is tapped on Safari on iOS 16.
 
 ## Release Notes
 

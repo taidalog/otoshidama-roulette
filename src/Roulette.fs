@@ -1,4 +1,4 @@
-// otoshidama-roulette Version 0.4.0
+// otoshidama-roulette
 // https://github.com/taidalog/otoshidama-roulette
 // Copyright (c) 2023-2024 taidalog
 // This software is licensed under the MIT License.
@@ -44,6 +44,12 @@ module Roulette =
 
     let randomRadix' () : Radix =
         List.item (Random.lessThan 3) [ Radix.Bin; Radix.Dec; Radix.Hex ]
+
+    let shouldGuaranteeDec (radix: Radix) : bool =
+        radix = Radix.Dec && Random.nextDouble () < 0.03
+
+    let shouldGuaranteeHex (radix: Radix) : bool =
+        radix = Radix.Hex && Random.nextDouble () < 0.03
 
     let binaryExpression (radix: Radix) : string =
         match radix with
@@ -101,6 +107,19 @@ module Roulette =
                 |> List.map (fun x -> document.getElementById x)
                 |> List.map2 (fun g e -> setInterval (fun _ -> turn g e) 100) generators
 
+            let message = document.getElementById "message"
+            let button = document.getElementById "button" :?> HTMLButtonElement
+
+            if shouldGuaranteeDec radix then
+                message.innerText <- "10進法確定!"
+                button.className <- "bamboo-leaves"
+            else if shouldGuaranteeHex radix then
+                message.innerText <- "16進法確定!"
+                button.className <- "pine-leaves"
+            else
+                message.innerText <- "お年玉ルーレット！"
+                button.className <- ""
+
             (document.getElementById "button" :?> HTMLButtonElement).innerText <- "止"
             RunningState.Running(intervalIds, values, ids, v, b, radixToString radix)
 
@@ -136,7 +155,11 @@ module Roulette =
                 match t with
                 | [] ->
                     button.onclick <- fun _ -> toggle RunningState.Stopping
+                    button.className <- ""
                     button.innerText <- "始"
+
+                    let message = document.getElementById "message"
+                    message.innerText <- "お年玉ルーレット！"
 
                     result.innerHTML <-
                         if radix = "(10)" then

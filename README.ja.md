@@ -1,6 +1,6 @@
 # otoshidama-roulette
 
-Version 0.4.0
+Version 0.5.0
 
 [English README](README.md)
 
@@ -29,7 +29,7 @@ Version 0.4.0
 
 ## 既知の問題
 
--
+- iOS 16 の Safari にて、ボタンをタップした際に効果音が再生されないことがある。
 
 ## リリースノート
 
