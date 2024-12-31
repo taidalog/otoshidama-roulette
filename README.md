@@ -1,6 +1,6 @@
 # otoshidama-roulette
 
-Version 0.5.0
+Version 1.0.0
 
 [Japanese README](README.ja.md)
 
@@ -17,7 +17,10 @@ A Web application for determining the amount of "otoshidama", a gift of money gi
 
 ## Recommended environment
 
-- Mozilla Firefox 132.0.2 (64 bit) or later.
+- Mozilla Firefox 133.0.3 (64 bit) or later.
+- Google Chrome 131.0.6778.205 (64 bit) or later.
+- Microsoft Edge 131.0.2903.112 (64 bit) or later.
+- Safari 16.6 (iOS 16.6) or later.
 
 ## Terms of Service
 
